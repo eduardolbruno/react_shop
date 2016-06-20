@@ -5,8 +5,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 const Products = ({ product }) => {
 
-  return (
-   
+  return (   
     <ImageList cols={5} gap={10}>
       {product.map((item) => (
         <ImageListItem key={item.id}>

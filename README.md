@@ -1,5 +1,6 @@
 # ReactJS Shop
-This is a product catalog browser developed in ReactJS, using JSON objects from Heroku server API.
+This is a product catalog browser developed in ReactJS.
+Implements JSON objects from Heroku server API.
 
 <br>
  <p align="center">
