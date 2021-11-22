@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import styles from '../../styles/Header.module.css';
 import Search from '../Search'
 
-const Header = () => {
+const Header = ({products}) => {
   const cart = useSelector((state) => state.cart);
 
 // Getting the count of items
@@ -28,7 +28,7 @@ const getItemsCount = () => {
           <p>Carrito ({getItemsCount()})</p>
         </li>
       </ul>
-      <Search/>
+      <Search productList={products}/>
     </nav>
   );
 };
