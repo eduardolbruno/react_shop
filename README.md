@@ -4,6 +4,6 @@ This is a product catalog browser developed in ReactJS, using JSON objects from 
 
 ## Dependencies
 
-> ReactJS
-> NextJS
-> Axios
+> ReactJS<br>
+> NextJS<br>
+> Axios<br>
