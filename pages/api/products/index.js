@@ -2,18 +2,18 @@ import axios from 'axios';
 import api from "../../../config";
 
 export async function getProducts() {
-  
-  let url = api.api.baseUrl+`api/product`;
+
+  let url = api.api.baseUrl + `api/product`;
 
   await axios.get(url)
-  .then(res => {
-    //console.log(res.data) 
-    return res;
+    .then(res => {
+      //console.log(res.data) 
+      return res;
 
-  })
-  .catch(error => {
+    })
+    .catch(error => {
       console.log(error)
-  })
+    })
 }
 
 export default function handler(req, res) {

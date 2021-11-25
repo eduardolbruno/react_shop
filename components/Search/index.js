@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import styles from '../../styles/Search.module.css';
+import TextField from '@mui/material/TextField';
 
 const Search = (props) => {
 
@@ -16,10 +17,10 @@ const Search = (props) => {
     const { productList } = props;
     const input = e.currentTarget.value;
 
-    const newFilteredSuggestions = productList.filter(function(prod){
-      return (prod.brand.toString().toLowerCase().indexOf(input.toLowerCase()) > -1 
-      ||  
-      prod.model.toString().toLowerCase().indexOf(input.toLowerCase()) > -1)
+    const newFilteredSuggestions = productList.filter(function (prod) {
+      return (prod.brand.toString().toLowerCase().indexOf(input.toLowerCase()) > -1
+        ||
+        prod.model.toString().toLowerCase().indexOf(input.toLowerCase()) > -1)
     });
 
     setActive(0);
@@ -28,14 +29,14 @@ const Search = (props) => {
     setInput(e.currentTarget.value)
   };
 
-const onClick = e => {
+  const onClick = e => {
     setActive(0);
     setFiltered([]);
     setIsShow(false);
     setInput(e.currentTarget.innerText)
   };
 
-const onKeyDown = e => {
+  const onKeyDown = e => {
     if (e.keyCode === 13) { // enter key
       setActive(0);
       setIsShow(false);
@@ -49,7 +50,7 @@ const onKeyDown = e => {
     }
   };
 
-const renderAutocomplete = () => {
+  const renderAutocomplete = () => {
     if (isShow && input) {
       if (filtered.length) {
         return (
@@ -61,9 +62,9 @@ const renderAutocomplete = () => {
               }
               return (
                 <li className={className} key={suggestion.id}>
-                    <a href={`/product/${suggestion.id}`}>
-                      {suggestion.brand} - {suggestion.model}
-                    </a>
+                  <a href={`/product/${suggestion.id}`}>
+                    {suggestion.brand} - {suggestion.model}
+                  </a>
                 </li>
               );
             })}
@@ -82,14 +83,19 @@ const renderAutocomplete = () => {
 
   return (
     <>
-      <input
+
+      <TextField  label="Buscar..." id="fullWidth" value={input}
+        className={input} onChange={onChange}
+        onKeyDown={onKeyDown} />
+
+      {/* <input
         type="text"
         onChange={onChange}
         onKeyDown={onKeyDown}
-        value={input} 
+        value={input}
         className={input}
         placeholder="Buscar..."
-      />
+      /> */}
       {renderAutocomplete()}
     </>
   );
