@@ -3,7 +3,7 @@ This is a product catalog browser developed in ReactJS, using JSON objects from 
 
 <br>
  <p align="center">
- <img src="https://i.postimg.cc/2ydgRqbv/Screenshot-2021-11-25-041236.png" width="600">
+ <img src="https://i.postimg.cc/904zLhrv/Screenshot-2021-11-25-041236.png" width="600">
  </p>
 <br>
  
