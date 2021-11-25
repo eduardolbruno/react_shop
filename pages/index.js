@@ -8,7 +8,6 @@ const ShopPage = ({ products }) => {
 
   return (
     <div>
-      <h1 className={styles.title}>Home</h1>
       <Container sx={{ py: 8 }} maxWidth="md">
         <Products product={products} />
       </Container>
