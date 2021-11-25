@@ -7,9 +7,7 @@ export async function getProducts() {
 
   await axios.get(url)
     .then(res => {
-      //console.log(res.data) 
       return res;
-
     })
     .catch(error => {
       console.log(error)

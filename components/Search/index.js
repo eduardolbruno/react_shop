@@ -1,8 +1,5 @@
 import React from 'react';
-import { useCallback, useRef, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image';
+import { useState } from 'react'
 import styles from '../../styles/Search.module.css';
 import TextField from '@mui/material/TextField';
 
@@ -37,15 +34,15 @@ const Search = (props) => {
   };
 
   const onKeyDown = e => {
-    if (e.keyCode === 13) { // enter key
+    if (e.keyCode === 13) { // "enter"
       setActive(0);
       setIsShow(false);
       setInput(filtered[active])
     }
-    else if (e.keyCode === 38) { // up arrow
+    else if (e.keyCode === 38) { // flecha arriba
       return (active === 0) ? null : setActive(active - 1);
     }
-    else if (e.keyCode === 40) { // down arrow
+    else if (e.keyCode === 40) { // flecha abajo
       return (active - 1 === filtered.length) ? null : setActive(active + 1);
     }
   };
@@ -54,14 +51,15 @@ const Search = (props) => {
     if (isShow && input) {
       if (filtered.length) {
         return (
-          <ul className={styles}>
+
+          <ul className={styles.autocomplete}>
             {filtered.map((suggestion, index) => {
               let className;
               if (index === active) {
                 className = "active";
               }
               return (
-                <li className={className} key={suggestion.id}>
+                <li key={suggestion.id}>
                   <a href={`/product/${suggestion.id}`}>
                     {suggestion.brand} - {suggestion.model}
                   </a>
@@ -72,9 +70,12 @@ const Search = (props) => {
         );
       } else {
         return (
-          <div className="no-autocomplete">
-            <em>No se ha encontrado</em>
-          </div>
+          <ul className={styles.autocomplete}>
+            <li >
+              <em>No hay resultados.</em>
+            </li>
+          </ul>
+
         );
       }
     }
@@ -83,19 +84,9 @@ const Search = (props) => {
 
   return (
     <>
-
-      <TextField  label="Buscar..." id="fullWidth" value={input}
-        className={input} onChange={onChange}
-        onKeyDown={onKeyDown} />
-
-      {/* <input
-        type="text"
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        value={input}
-        className={input}
-        placeholder="Buscar..."
-      /> */}
+      <TextField label="Buscar..." id="fullWidth" value={input}
+        className={styles.input} onChange={onChange} autoComplete={"off"}
+        onKeyDown={onKeyDown}></TextField>
       {renderAutocomplete()}
     </>
   );
